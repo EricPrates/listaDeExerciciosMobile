@@ -5,10 +5,14 @@ import { useState } from "react";
 export default function Input({placeholder, value, label, ChangeText}) {
     const [novoValor, setValor] = useState(value);
     return (
-       <>
-        <Text style ={styles.text} > Entre com o {label}: {novoValor}</Text>
-        <TextInput style={styles.input} placeholder= {placeholder} onChangeText = {(e)=> setValor(e)}/>
-    </>
+    <View style = {styles.view}>
+        <Text style ={styles.text} > Entre com o {label}</Text>
+        <TextInput style={styles.input} placeholder= {placeholder}ChangeText = {(e)=> setValor(e) } value = {novoValor}/>
+            {
+                console.log(ChangeText)
+            }
+            
+    </View>
     )
 }
 
@@ -22,7 +26,11 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize: 20,
-        margin: 2,
+        margin: 4,
         padding: 5,
+    },
+    view:{
+        backgroundColor: '#FFD700',
+        borderRadius: 20
     }
 });
