@@ -13,9 +13,8 @@ import Btn from '../components/Btn';
 
 export default function App() {
 const control = appController();
-const [precoEtanol, setprecoEtanol] = useState('');
-const [precoGasolina, setprecoGasolina] = useState('');
-const [consumoMedio, setConsumoMedio] = useState('');
+
+const [error, setError] = useState (false);
 
 
   return (
@@ -25,27 +24,42 @@ const [consumoMedio, setConsumoMedio] = useState('');
       <Title titulo = 'Conversor de Combustível'></Title>
       <KeyboardAvoidingView>
 
-        <Input value = {consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo'/>
+        <Input value = {control.consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo'/>
         
-        <Input value = {precoGasolina} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
+        <Input value = {control.gasolina} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
           (e) => {
-            setprecoGasolina(e); 
-            control.setprecoGasolina(e)
+            control.setPrecoGasolina(e)
+            
+          }
+        }/>
+        <Input value = {control.distancia} placeholder="Digite aqui a Distância" label = "distância" onChangeText= {
+          (e) => {
+            ser(e); 
+            control.setDistanciaKm(e)
+            
           }
         }/>
         
-        <Input value = {precoEtanol} placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" onChangeText= {
+        <Input value = {control.etanol} placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" onChangeText= {
           (e) => {
-            setprecoEtanol(e);
-            control.setprecoEtanol(e)
+            
+             control.setPrecoEtanol(e)
+              
             }
             }/>
         <View style = {styles.container}>
             <Btn label = 
             'Custo por KM'></Btn>
-            <Btn label = 'Custo por Distância' value = ''></Btn>
+            <Btn label = 'Custo por Distância' value = '' onPress={ (e) => control.}></Btn>
             <Btn label = 'Melhor opção'></Btn>
-            <Btn label = 'Limpar'></Btn>
+            <Btn label = 'Custo KM gasolina'></Btn>
+            <Btn label = 'Custo KM etanol'></Btn>
+            <Btn label = 'Limpar' onPress={() =>{
+              control.setClean(); 
+              setprecoGasolina(''); 
+              setprecoEtanol(''); 
+              alert('Tela limpa')}}>
+            </Btn>
 
           </View>
       </KeyboardAvoidingView>

@@ -7,33 +7,38 @@ import { useState } from "react"
 
 const appController = ()=>{
 
-      const [gasolina, setGasolina] = useState(new Combustivel())
-      const [etanol, setEtanol] = useState(new Combustivel())
-      const [distancia, setDistancia] = useState(0)
+      let gasolina = new Combustivel();
+      let etanol = new Combustivel();
+      let consumoMedio = 0;
+      let distancia = 0;
 
       function setPrecoGasolina(preco = 0){
-        setGasolina(new Combustivel(preco))
+        if(preco <= 0){
+            return false;
+        }
+        gasolina.setPreco(preco)
       }
 
-     function cleanView(){
-        setGasolina(new Combustivel())
-        setEtanol(new Combustivel())
-        setDistancia(0)
-    }
+     function setClean(){
+        gasolina = new Combustivel(0);
+        etanol = new Combustivel(0);
+        distancia = 0;
+        consumoMedio = 0;
+     }
 
     function setPrecoEtanol(preco = 0){
-        setEtanol(new Combustivel(preco))
+        etanol.setPreco(preco)
     }
     
      function setDistanciaKm(km = 0) {
-    setDistancia(parseFloat(km));
+        distancia = km;
   }
-
+    
     return{
         //estados
         gasolina,etanol, distancia,
         //Métodos
-        setPrecoEtanol, cleanView, setPrecoGasolina, setDistanciaKm
+        setPrecoEtanol,setPrecoGasolina, setDistanciaKm, setClean
     }
 
 }

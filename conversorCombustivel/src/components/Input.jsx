@@ -4,11 +4,14 @@ import { useState } from "react";
 
 export default function Input({placeholder, value, label, onChangeText}) {
    
+    const [valor, setValor] = useState(value);
     return (
     <View style = {styles.view}>
         <Text style ={styles.text} > Entre com o {label}</Text>
-        <TextInput style={styles.input} placeholder= {placeholder}  onChangeText = {onChangeText} value={value}  keyboardType="numeric" />
-            
+        <TextInput style={styles.input} placeholder= {placeholder}  onChangeText = {(e)=> {
+            setValor(e) 
+            onChangeText(valor)
+            }}  keyboardType="numeric" />
     </View>
     )
 }
