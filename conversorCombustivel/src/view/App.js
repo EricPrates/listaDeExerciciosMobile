@@ -13,8 +13,9 @@ import Btn from '../components/Btn';
 
 export default function App() {
 const control = appController();
-const [precoEtanol, setprecoEtanol] = useState();
-const [precoGasolina, setprecoGasolina] = useState();
+const [precoEtanol, setprecoEtanol] = useState('');
+const [precoGasolina, setprecoGasolina] = useState('');
+const [consumoMedio, setConsumoMedio] = useState('');
 
 
   return (
@@ -24,11 +25,21 @@ const [precoGasolina, setprecoGasolina] = useState();
       <Title titulo = 'Conversor de Combustível'></Title>
       <KeyboardAvoidingView>
 
-        <Input value = '' placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo'/>
+        <Input value = {consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo'/>
         
-        <Input value = '' placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" ChangeText={(onChangeText) => control.precoGasolina(value) }/>
+        <Input value = {precoGasolina} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
+          (e) => {
+            setprecoGasolina(e); 
+            control.setprecoGasolina(e)
+          }
+        }/>
         
-        <Input value = '' placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" ChangeText={(onChangeText) => control.precoEtanol(e)}/>
+        <Input value = {precoEtanol} placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" onChangeText= {
+          (e) => {
+            setprecoEtanol(e);
+            control.setprecoEtanol(e)
+            }
+            }/>
         <View style = {styles.container}>
             <Btn label = 
             'Custo por KM'></Btn>

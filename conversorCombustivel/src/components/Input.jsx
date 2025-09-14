@@ -2,15 +2,12 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { useState } from "react";
 
-export default function Input({placeholder, value, label, ChangeText}) {
-    const [novoValor, setValor] = useState(value);
+export default function Input({placeholder, value, label, onChangeText}) {
+   
     return (
     <View style = {styles.view}>
         <Text style ={styles.text} > Entre com o {label}</Text>
-        <TextInput style={styles.input} placeholder= {placeholder}ChangeText = {(e)=> setValor(e) } value = {novoValor}/>
-            {
-                console.log(ChangeText)
-            }
+        <TextInput style={styles.input} placeholder= {placeholder}  onChangeText = {onChangeText} value={value}  keyboardType="numeric" />
             
     </View>
     )

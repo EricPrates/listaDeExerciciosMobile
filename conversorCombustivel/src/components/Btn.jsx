@@ -1,13 +1,13 @@
 import { Text, StyleSheet, TouchableOpacity, View} from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
-export default function Btn({label}){
+export default function Btn({label, onPress}){
 const contemLimpar = label.toLowerCase().includes('limpar');
 const estiloBota = contemLimpar? style.btnLimpar: style.view;
 
     return(
         <View style = {estiloBota}>
-            <TouchableOpacity onPress={(e)=> console.log(e.target.value)}>
+            <TouchableOpacity onPress={(onPress)=> console.log(onPress.target.value)}>
                 <Text style = {style.texto}>{label}</Text>
             </TouchableOpacity>
         </View>
