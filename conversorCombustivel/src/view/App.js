@@ -8,6 +8,7 @@ import { use, useState } from 'react';
 import Input from '../components/Input';
 import Title from '../components/Title';
 import Btn from '../components/Btn';
+import Resp from '../components/resp';
 
 
 
@@ -24,7 +25,11 @@ const [error, setError] = useState (false);
       <Title titulo = 'Conversor de Combustível'></Title>
       <KeyboardAvoidingView>
 
-        <Input value = {control.consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo'/>
+        <Input value = {control.consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo' onChangeText= {
+          (e) => {
+            control.setConsumoMedio(e)
+            
+          }}/>
         
         <Input value = {control.gasolina} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
           (e) => {
@@ -50,17 +55,20 @@ const [error, setError] = useState (false);
         <View style = {styles.container}>
             <Btn label = 
             'Custo por KM'></Btn>
-            <Btn label = 'Custo por Distância' value = '' onPress={ (e) => control.}></Btn>
+            <Btn label = 'Custo por Distância' value = {[control.calculaPrecoDistanciaEtanol, control.calculaPrecoDistanciaGasolina]} onPress={ (e) => {
+              control.calculaPrecoDistanciaEtanol();
+              control.calculaPrecoDistanciaGasolina()}
+               }></Btn>
             <Btn label = 'Melhor opção'></Btn>
-            <Btn label = 'Custo KM gasolina'></Btn>
-            <Btn label = 'Custo KM etanol'></Btn>
+            <Btn label = 'Custo KM gasolina' value = {control.calculaPrecoDistanciaGasolina()}></Btn>
+            <Btn label = 'Custo KM etanol' value ={control.calculaPrecoDistanciaEtanol()}></Btn>
             <Btn label = 'Limpar' onPress={() =>{
               control.setClean(); 
               setprecoGasolina(''); 
               setprecoEtanol(''); 
               alert('Tela limpa')}}>
             </Btn>
-
+            <Resp/>
           </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
