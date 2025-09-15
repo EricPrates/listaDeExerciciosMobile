@@ -9,12 +9,10 @@ const appController = ()=>{
 
       let gasolina = new Combustivel();
       let etanol = new Combustivel();
-      let precoMedioGasolina = () => gasolina.preco / consumoMedio;
-      let precoMedioEtanol = () => gasolina.etanol / consumoMedio;
+      let precoMedioEtanol = 0
       let distancia = 0;
-      let precodistanciaGasolina = 0;
       let consumoMedio = 0;
-
+    let precoMedioGasolina = 0;
       function setPrecoGasolina(preco = 0){
         if(preco <= 0){
             return false;
@@ -37,23 +35,24 @@ const appController = ()=>{
         distancia = km;
   }
     function calculaPrecoDistanciaGasolina(){
-        precodistanciaGasolina = distancia  * gasolina.preco;
+       return distancia  * gasolina.preco;
         
     }
     function calculaPrecoDistanciaEtanol(){
-        precodistanciaGasolina = distancia  * gasolina.preco;
+       return distancia  * etanol.preco;
         
     }
     function setConsumoMedio(consumo){
         consumoMedio = consumo;
     }
-    
+   function setPrecoMedioGasolina() { return precoMedioGasolina = gasolina.preco / consumoMedio};
+    function setPrecoMedioEtanol() { return precoMedioEtanol =  etanol.preco / consumoMedio};
     return{
         //estados
         gasolina,etanol, distancia, consumoMedio,
         //Métodos
         setPrecoEtanol,setPrecoGasolina, setDistanciaKm, setClean, calculaPrecoDistanciaEtanol, 
-        calculaPrecoDistanciaGasolina,precoMedioEtanol,precoMedioGasolina, setConsumoMedio  
+        calculaPrecoDistanciaGasolina,setPrecoMedioGasolina,setPrecoMedioEtanol, setConsumoMedio  
     }
 
 }

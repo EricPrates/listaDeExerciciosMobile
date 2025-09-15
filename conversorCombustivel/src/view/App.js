@@ -53,21 +53,20 @@ const [error, setError] = useState (false);
             }
             }/>
         <View style = {styles.container}>
-            <Btn label = 
-            'Custo por KM'></Btn>
-            <Btn label = 'Custo por Distância' value = {[control.calculaPrecoDistanciaEtanol, control.calculaPrecoDistanciaGasolina]} onPress={ (e) => {
-              control.calculaPrecoDistanciaEtanol();
-              control.calculaPrecoDistanciaGasolina()}
-               }></Btn>
-            <Btn label = 'Melhor opção'></Btn>
-            <Btn label = 'Custo KM gasolina' value = {control.calculaPrecoDistanciaGasolina()}></Btn>
-            <Btn label = 'Custo KM etanol' value ={control.calculaPrecoDistanciaEtanol()}></Btn>
-            <Btn label = 'Limpar' onPress={() =>{
-              control.setClean(); 
-              setprecoGasolina(''); 
-              setprecoEtanol(''); 
-              alert('Tela limpa')}}>
-            </Btn>
+              <Btn label = 'Custo por KM'></Btn>
+              <Btn label = 'Custo por Distância' value = {[control.calculaPrecoDistanciaEtanol, control.calculaPrecoDistanciaGasolina]} onPress={ (e) => {
+                control.calculaPrecoDistanciaEtanol();
+                control.calculaPrecoDistanciaGasolina()}
+                }></Btn>
+              <Btn label = 'Melhor opção'></Btn>
+              <Btn label = 'Custo KM gasolina' value = {control.calculaPrecoDistanciaGasolina()}></Btn>
+              <Btn label = 'Custo KM etanol' value ={control.calculaPrecoDistanciaEtanol()}></Btn>
+              <Btn label = 'Limpar' onPress={() =>{
+                control.setClean(); 
+                setprecoGasolina(''); 
+                setprecoEtanol(''); 
+                alert('Tela limpa')}}>
+              </Btn>
             <Resp/>
           </View>
       </KeyboardAvoidingView>
