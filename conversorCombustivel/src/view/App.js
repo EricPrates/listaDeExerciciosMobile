@@ -15,9 +15,16 @@ import Resp from '../components/resp';
 export default function App() {
 const control = appController();
 
-const [error, setError] = useState (false);
+const [precoGas, setPrecoGas] = useState('');
+  const [precoEtanol, setPrecoEtanol] = useState('');
+  const [consumo, setConsumo] = useState('');
+  const [distancia, setDistancia] = useState('');
+  const [resultado, setResultado] = useState('');
 
-
+  let resposta = (texto, valor) =>{
+     return (`${texto} ${valor}`)
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       
@@ -25,49 +32,50 @@ const [error, setError] = useState (false);
       <Title titulo = 'Conversor de Combustível'></Title>
       <KeyboardAvoidingView>
 
-        <Input value = {control.consumoMedio} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo' onChangeText= {
+        <Input value = {consumo} placeholder="Digite o consumo médio do veículo" label = 'Consumo médio do veículo' onChangeText= {
           (e) => {
+            setConsumo(e)
             control.setConsumoMedio(e)
             
           }}/>
         
-        <Input value = {control.gasolina} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
+        <Input value = {precoGas} placeholder="Digite aqui o preço da Gasolina" label = "Valor da gasolina" onChangeText= {
           (e) => {
+            setPrecoGas(e)
             control.setPrecoGasolina(e)
             
           }
         }/>
-        <Input value = {control.distancia} placeholder="Digite aqui a Distância" label = "distância" onChangeText= {
+        <Input value = {distancia} placeholder="Digite aqui a Distância" label = "distância" onChangeText= {
           (e) => {
-            ser(e); 
+            setDistancia(e); 
             control.setDistanciaKm(e)
             
           }
         }/>
         
-        <Input value = {control.etanol} placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" onChangeText= {
+        <Input value = {precoEtanol} placeholder="Digite aqui o preço do Etanol" label = "Valor do Etanol" onChangeText= {
           (e) => {
-            
+            setPrecoEtanol(e)
              control.setPrecoEtanol(e)
               
             }
             }/>
         <View style = {styles.container}>
-              <Btn label = 'Custo por KM'></Btn>
-              <Btn label = 'Custo por Distância' value = {[control.calculaPrecoDistanciaEtanol, control.calculaPrecoDistanciaGasolina]} onPress={ (e) => {
-                control.calculaPrecoDistanciaEtanol();
-                control.calculaPrecoDistanciaGasolina()}
+              <Btn label = 'Custo por Distância Etanol' value = {control.calculaPrecoDistanciaEtanol()} onPress={ () => {
+                resposta('Custo por Distância Etanol', control.calculaPrecoDistanciaEtanol() )
+               }
                 }></Btn>
               <Btn label = 'Melhor opção'></Btn>
-              <Btn label = 'Custo KM gasolina' value = {control.calculaPrecoDistanciaGasolina()}></Btn>
-              <Btn label = 'Custo KM etanol' value ={control.calculaPrecoDistanciaEtanol()}></Btn>
+              <Btn label = 'Custo do KM gasolina' value = {control.precoMedioGasolina()} onPress={() =>{resposta('Custo do KM gasolina', control.precoMedioGasolina() )}} ></Btn>
+              <Btn label = 'Custo KM etanol' value ={control.precoMedioEtanol()} onPress={() =>{resposta('Custo do KM Etanol', control.precoMedioEtanol() )}}></Btn>
               <Btn label = 'Limpar' onPress={() =>{
                 control.setClean(); 
-                setprecoGasolina(''); 
-                setprecoEtanol(''); 
+                setPrecoGas(''); 
+                setPrecoEtanol(''); 
                 alert('Tela limpa')}}>
               </Btn>
-            <Resp/>
+            <Resp value={resposta}/>
           </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

@@ -11,6 +11,8 @@ return(
 
 const style = StyleSheet.create({
     view: {
-        backgroundColor: '#dcdcdc'
+        backgroundColor: '#dcdcdc',
+        borderRadius: 60,
+        width: 80
     }
 })

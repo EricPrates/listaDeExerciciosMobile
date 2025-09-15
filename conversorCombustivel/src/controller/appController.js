@@ -7,12 +7,14 @@ import { useState } from "react"
 
 const appController = ()=>{
 
-      let gasolina = new Combustivel();
-      let etanol = new Combustivel();
-      let precoMedioEtanol = 0
-      let distancia = 0;
-      let consumoMedio = 0;
+    let gasolina = new Combustivel();
+    let etanol = new Combustivel();
+    let precoMedioEtanol = 0
+    let distancia = 0;
+    let consumoMedio = 0;
     let precoMedioGasolina = 0;
+
+    
       function setPrecoGasolina(preco = 0){
         if(preco <= 0){
             return false;
@@ -45,11 +47,11 @@ const appController = ()=>{
     function setConsumoMedio(consumo){
         consumoMedio = consumo;
     }
-   function setPrecoMedioGasolina() { return precoMedioGasolina = gasolina.preco / consumoMedio};
-    function setPrecoMedioEtanol() { return precoMedioEtanol =  etanol.preco / consumoMedio};
+   function setPrecoMedioGasolina() {  precoMedioGasolina = gasolina.preco / consumoMedio};
+    function setPrecoMedioEtanol() { precoMedioEtanol =  etanol.preco / consumoMedio};
     return{
         //estados
-        gasolina,etanol, distancia, consumoMedio,
+        gasolina,etanol, distancia, consumoMedio, precoMedioEtanol, precoMedioGasolina,
         //Métodos
         setPrecoEtanol,setPrecoGasolina, setDistanciaKm, setClean, calculaPrecoDistanciaEtanol, 
         calculaPrecoDistanciaGasolina,setPrecoMedioGasolina,setPrecoMedioEtanol, setConsumoMedio  
