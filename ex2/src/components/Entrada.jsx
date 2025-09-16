@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { TextInput, Text, StyleSheet } from "react-native";
 
-export default function Entrada({placeholder,}){
+export default function Entrada({placeholder, text, onChangeText}){
 
-    const [valor, setValor] = useState(0);
+    
     
 
     return(
-
-        <TextInput placeholder= {placeholder} onChangeText={(e) =>{setValor(e)}}></TextInput>
+        <>
+            <Text>{text}</Text>
+            <TextInput placeholder= {placeholder} onChangeText={onChangeText}></TextInput>
+        </>
     );
 
 }
