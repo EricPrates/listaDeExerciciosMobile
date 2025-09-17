@@ -14,4 +14,24 @@ const MoedaController = () =>{
     function setValorDolar(valor){
         dolar.setValor(valor);
     }
+    function calculaRealDolar(){
+        return real.getValor() * 5.20;
+    }
+    function calcularRealEuro(){
+        return real.getValor() * 5.50;
+    }
+    function calcularDolarEuro(){
+        return dolar.getValor() * 1.05;
+    }
+    function calcularDolarReal(){
+        return dolar.getValor() / 5.20;
+    }
+    function calcularEuroReal(){
+        return euro.getValor() / 5.50;
+    }
+    function calcularEuroDolar(){
+        return euro.getValor() / 1.05;
+    }
+    
+    return {setValorReal, setValorEuro, setValorDolar, calcularDolar, calcularEuro}
 }

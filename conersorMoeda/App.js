@@ -8,13 +8,22 @@ export default function App() {
 
   const control = new MoedaController();
   const [real, setReal] = useState(0);
+  const [euro, setEuro] = useState(0);
+  const [dolar, setDolar] = useState(0);
 
   return (
     <View style={styles.container}>
+      <Text>Conversor de Moedas</Text>
+      <Text>Escolha a moeda de origem</Text>
+      <View>
+        <Btn text='Dólar' ></Btn>
+        <Btn text='Euro' ></Btn>
+        <Btn text='Real' ></Btn>
+      </View>
       
       <StatusBar style="auto" />
       <Entrada text = 'Valor em Real'placeholder='Entre com o valor em real' onChangeText={(valor)=>{setReal(valor)}}></Entrada>
-      <Entrada text = 'Valor em Dólar'placeholder='Entre com o valor em real' onChangeText={(valor)=>{setReal(valor)}}></Entrada>
+      <Entrada text = 'Valor em Dólar'placeholder='Entre com o valor do Dólar' onChangeText={(valor)=>{setReal(valor)}}></Entrada>
       <Entrada text = 'Valor em Euro'placeholder='Entre com o valor em real' onChangeText={(valor)=>{setReal(valor)}}></Entrada>
     </View>
   );
@@ -27,4 +36,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  moedaOrigr:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:'60%',
+    marginTop:20,
+    marginBottom:20
+
+  }
 });
