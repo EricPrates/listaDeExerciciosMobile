@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     width:'60%',
     marginTop:20,
     marginBottom:20
+      
 
   }
 });
