@@ -6,12 +6,13 @@ import Btn from './src/components/Btn';
 import MoedaController from './src/controller/MoedaController';
 
 export default function App() {
+
   const [valor, setValor] = useState('');
   const control = MoedaController();
   const [real, setReal] = useState();
   const [dolar, setDolar] = useState();
   const [euro, setEuro] = useState();
-  const [moeda, setMoeda] = useState(false);
+  const [moeda, setMoeda] = useState(null);
   
   return (
     
@@ -19,12 +20,12 @@ export default function App() {
         <StatusBar style="auto" />
         <Text style = {styles.Text}>Escolha a moeda de origem</Text>
         <View style ={styles.bts}>
-            <Btn onPress={(e) => {setMoeda(true)}} label = 'Euro'></Btn>
-            <Btn onPress={(e) => { setMoeda(true)}} label = 'Dólar'></Btn>
-            <Btn onPress={() => {setMoeda(true)}} label = 'Real'></Btn>
+            <Btn onPress={() => {setMoeda('euro')}} label ='Euro'></Btn>
+            <Btn onPress={() => {setMoeda('dólar')}} label = 'Dólar'></Btn>
+            <Btn onPress={() => {setMoeda('real')}} label = 'Real'></Btn>
         </View>
         {
-          moeda && <Entrada placeholder="Digite um valor"  onChangeText={setValor} />
+          moeda && <Entrada placeholder={control.verificaMoeda(moeda)}  onChangeText={setValor} />
         }
         
       </View>

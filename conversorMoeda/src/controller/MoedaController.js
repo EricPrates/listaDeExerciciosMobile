@@ -6,6 +6,7 @@ const MoedaController = () => {
     let euro = new Moeda();
     let real = new Moeda();
 
+
     function setDolar(valor=0){
         dolar.setValor(valor);
     }
@@ -18,7 +19,15 @@ const MoedaController = () => {
         real.setValor(valor);
     }   
    
-
+    function verificaMoeda(moeda){
+        if(moeda === 'dólar'){
+            return 'Valor em Dólar';
+        }else if(moeda === 'euro'){
+            return 'Valor em Euro';
+        }else if(moeda === 'real'){
+            return 'Valor em Real';
+        }
+    }
 
     return {
         setDolar,
