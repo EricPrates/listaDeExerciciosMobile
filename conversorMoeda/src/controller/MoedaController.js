@@ -18,8 +18,23 @@ const MoedaController = () => {
     function setReal(valor=0){
         real.setValor(valor);
     }
-    function converteParaDolar(valorEmReal){
-        
+    function converteRealParaDolar(valorEmReal){
+        return real / 5.30;
+    }
+    function converteRealParaEuro(valorEmReal){
+        return real / 6.25;
+    }
+    function converteDolarReal(valorEmDolar){
+        return dolar * 5.30;
+    }
+    function converteDolarEuro(valorEmDolar){
+        return dolar * 0.85;
+    }
+    function converteEuroReal(valorEmEuro){
+        return euro * 6.25;
+    }
+    function converteEuroDolar(valorEmEuro){
+        return euro * 1.18;
     }
 
    function verificaMoeda(moeda, valor){
