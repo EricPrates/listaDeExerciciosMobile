@@ -6,11 +6,11 @@ export default function Btn({label, onPress}){
 
 
     return(
-        <>
-            <TouchableOpacity onPress={(onPress)}>
+        <View style = {style.lcontainer}>
+            <TouchableOpacity style ={style.btn} onPress={(onPress)}>
                 <Text style = {style.texto}>{label}</Text>
             </TouchableOpacity>
-        </>
+        </View>
     );
 }
 
@@ -22,16 +22,7 @@ const style = StyleSheet.create({
         padding:10,
         fontSize:13,
     },
-     view:{
-    backgroundColor: '#e78127ff',
-    flexDirection: 'row',
-    flexWrap:'wrap',
-    margin:8,
-    borderRadius:100,
-    backgroundColor: '#e78127ff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+     
   btnLimpar:{
     backgroundColor: '#DCDCDC',
     flexDirection: 'row',
@@ -40,5 +31,15 @@ const style = StyleSheet.create({
     borderRadius:100,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  btn:{
+    backgroundColor: '#90EE90',
+    flexDirection: 'row',
+    flexWrap:'wrap',
+    margin:8,
+    borderRadius:100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '1px 1px 1px #000',
+  },
 })
