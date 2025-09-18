@@ -25,7 +25,7 @@ export default function App() {
             <Btn onPress={() => {setMoeda('real')}} label = 'Real'></Btn>
         </View>
         {
-          moeda && <Entrada placeholder={control.verificaMoeda(moeda)}  onChangeText={setValor} />
+          moeda && <Entrada placeholder={(moeda)}  onChangeText={setValor} />
         }
         
       </View>

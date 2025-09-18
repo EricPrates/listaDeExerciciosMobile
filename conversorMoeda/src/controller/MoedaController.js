@@ -17,16 +17,20 @@ const MoedaController = () => {
  
     function setReal(valor=0){
         real.setValor(valor);
-    }   
-   
-    function verificaMoeda(moeda){
-        if(moeda === 'dólar'){
-            return 'Valor em Dólar';
-        }else if(moeda === 'euro'){
-            return 'Valor em Euro';
-        }else if(moeda === 'real'){
-            return 'Valor em Real';
-        }
+    }
+    function converteParaDolar(valorEmReal){
+        
+    }
+
+   function verificaMoeda(moeda, valor){
+    if(moeda === 'dólar'){
+        setDolar(valor);
+   }else if(moeda === 'euro'){
+        setEuro(valor);
+   }else if(moeda === 'real'){
+        setReal(valor);
+   }
+    
     }
 
     return {
@@ -35,7 +39,8 @@ const MoedaController = () => {
         setEuro,
        
         setReal,
-        
+        verificaMoeda,
+        retornaTextoMoeda
     };
 };
 
