@@ -8,7 +8,7 @@ import { use, useState } from 'react';
 import Input from '../components/Input';
 import Title from '../components/Title';
 import Btn from '../components/Btn';
-import Resp from '../components/resp';
+
 
 
 
@@ -67,15 +67,15 @@ const [precoGas, setPrecoGas] = useState('');
                }
                 }></Btn>
               <Btn label = 'Melhor opção'></Btn>
-              <Btn label = 'Custo do KM gasolina' value = {control.precoMedioGasolina()} onPress={() =>{resposta('Custo do KM gasolina', control.precoMedioGasolina() )}} ></Btn>
-              <Btn label = 'Custo KM etanol' value ={control.precoMedioEtanol()} onPress={() =>{resposta('Custo do KM Etanol', control.precoMedioEtanol() )}}></Btn>
+              <Btn label = 'Custo do KM gasolina' value = {control.setPrecoMedioGasolina()} onPress={() =>{resposta('Custo do KM gasolina', control.precoMedioGasolina() )}} ></Btn>
+              <Btn label = 'Custo KM etanol' value ={control.setPrecoMedioEtanol()} onPress={() =>{resposta('Custo do KM Etanol', control.precoMedioEtanol() )}}></Btn>
               <Btn label = 'Limpar' onPress={() =>{
                 control.setClean(); 
                 setPrecoGas(''); 
                 setPrecoEtanol(''); 
                 alert('Tela limpa')}}>
               </Btn>
-            <Resp value={resposta}/>
+           
           </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

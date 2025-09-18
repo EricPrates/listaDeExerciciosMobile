@@ -47,12 +47,12 @@ const appController = ()=>{
     function setConsumoMedio(consumo){
         consumoMedio = consumo;
     }
-   function setPrecoMedioGasolina() {  precoMedioGasolina = gasolina.preco / consumoMedio};
-    function setPrecoMedioEtanol() { precoMedioEtanol =  etanol.preco / consumoMedio};
+   function setPrecoMedioGasolina() {  return gasolina.preco / consumoMedio};
+    function setPrecoMedioEtanol() { return etanol.preco / consumoMedio};
     return{
         //estados
-        gasolina,etanol, distancia, consumoMedio, precoMedioEtanol, precoMedioGasolina,
-        //Métodos
+        gasolina,etanol, distancia, consumoMedio,
+                //Métodos
         setPrecoEtanol,setPrecoGasolina, setDistanciaKm, setClean, calculaPrecoDistanciaEtanol, 
         calculaPrecoDistanciaGasolina,setPrecoMedioGasolina,setPrecoMedioEtanol, setConsumoMedio  
     }

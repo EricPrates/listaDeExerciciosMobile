@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ex2",
-    "slug": "ex2",
+    "name": "conversorMoeda",
+    "slug": "conversorMoeda",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
