@@ -1,61 +1,51 @@
+// src/controller/MoedaController.js
 import Moeda from "../model/Moeda";
 
 const MoedaController = () => {
+    let moedaAtual = new Moeda(0,'');
 
-    let dolar = new Moeda();
-    let euro = new Moeda();
-    let real = new Moeda();
-
-
-    function setDolar(valor=0){
-        dolar.setValor(valor);
+    function definirMoedaTipo(tipo) {
+        moedaAtual.setTipo(tipo);
     }
-    
-    function setEuro(valor=0){
-        euro.setValor(valor);
-    }   
- 
-    function setReal(valor=0){
-        real.setValor(valor);
+    function definirMoedaValor(valor) {
+        
+         moedaAtual.setValor(valor);
     }
-    function converteRealParaDolar(valorEmReal){
-        return real / 5.30;
-    }
-    function converteRealParaEuro(valorEmReal){
-        return real / 6.25;
-    }
-    function converteDolarReal(valorEmDolar){
-        return dolar * 5.30;
-    }
-    function converteDolarEuro(valorEmDolar){
-        return dolar * 0.85;
-    }
-    function converteEuroReal(valorEmEuro){
-        return euro * 6.25;
-    }
-    function converteEuroDolar(valorEmEuro){
-        return euro * 1.18;
+    function converterParaReal() {
+        return moedaAtual ? moedaAtual.ParaReal() : '0.00';
     }
 
-   function verificaMoeda(moeda, valor){
-    if(moeda === 'dólar'){
-        setDolar(valor);
-   }else if(moeda === 'euro'){
-        setEuro(valor);
-   }else if(moeda === 'real'){
-        setReal(valor);
-   }
-    
+    function converterParaDolar() {
+        return moedaAtual ? moedaAtual.paraDolar() : '0.00';
     }
+
+    function converterParaEuro() {
+        return moedaAtual ? moedaAtual.paraEuro() : '0.00';
+    }
+    function getMoedaTipo() {
+        return moedaAtual.getTipo();
+    }
+    function calcularConversao() {
+            if (!moedaAtual.tipo || !moedaAtual.valor) return 'Nenhum valor ou moeda definida';
+
+            if(moedaAtual.tipo.toLocaleLowerCase() === 'dólar'){
+                return `Valor em real: ${converterParaReal()}, Valor em euro: ${converterParaEuro()}`;
+            } else if(moedaAtual.tipo.toLocaleLowerCase() === 'euro'){
+                return `Valor em real: ${converterParaReal()}, Valor em dólar: ${converterParaDolar()}`;
+            } else if(moedaAtual.tipo.toLocaleLowerCase()    === 'real'){
+                return `Valor em dólar: ${converterParaDolar()}, Valor em euro: ${converterParaEuro()}`;
+            }
+            return '';
+        }
 
     return {
-        setDolar,
-       
-        setEuro,
-       
-        setReal,
-        verificaMoeda,
-        retornaTextoMoeda
+        definirMoedaTipo,
+        definirMoedaValor,
+        converterParaReal,
+        converterParaDolar,
+        converterParaEuro,
+        getMoedaTipo,
+        calcularConversao
     };
 };
 

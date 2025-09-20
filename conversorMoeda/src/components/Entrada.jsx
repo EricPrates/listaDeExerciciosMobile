@@ -7,9 +7,7 @@ export default function Entrada({onChangeText, placeholder}) {
   
     return (
     <>
-    <TextInput keyboardType="numeric" style={styles.input} placeholder={'valor em' + placeholder}  onChangeText={(text) => {
-        onChangeText(text);
-    }}/>
+    <TextInput keyboardType="numeric" style={styles.input} placeholder={'valor em ' + placeholder}  onChangeText={(text) => onChangeText(text)}/>
     </>
    );
     

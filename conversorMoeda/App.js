@@ -4,15 +4,21 @@ import React, { useState } from 'react';
 import Entrada from './src/components/Entrada';
 import Btn from './src/components/Btn';
 import MoedaController from './src/controller/MoedaController';
+import Resp from './src/components/Resp';
 
 export default function App() {
 
-  const [valor, setValor] = useState('');
   const control = MoedaController();
-  const [real, setReal] = useState();
-  const [dolar, setDolar] = useState();
-  const [euro, setEuro] = useState();
-  const [moeda, setMoeda] = useState(null);
+  const [valor, setValor] = useState(0);
+  
+  const [resultado, setResultado] = useState(0);
+  const[moeda, setMoeda] = useState();
+
+  
+  function prepararCalculo(){
+    
+    setResultado(control.calcularConversao());
+  }
   
   return (
     
@@ -20,15 +26,17 @@ export default function App() {
         <StatusBar style="auto" />
         <Text style = {styles.Text}>Escolha a moeda de origem</Text>
         <View style ={styles.bts}>
-            <Btn onPress={() => {setMoeda('euro')}} label ='Euro'></Btn>
-            <Btn onPress={() => {setMoeda('dólar')}} label = 'Dólar'></Btn>
-            <Btn onPress={() => {setMoeda('real')}} label = 'Real'></Btn>
+            <Btn onPress={() => {setMoeda('euro');}} label ='euro'></Btn>
+            <Btn onPress={() => {setMoeda('dólar');}} label = 'dólar'></Btn>
+            <Btn onPress={() => {setMoeda('real');}} label = 'real'></Btn>
         </View>
+        
         {
-          moeda && <Entrada placeholder={(moeda)} onChangeText={setValor} />
+          moeda && <Entrada placeholder={moeda} onChangeText={setValor} value={valor} />
           
         }
-        
+        <Btn onPress={() => {control.definirMoedaValor(valor); control.definirMoedaTipo(moeda); setResultado(control.calcularConversao())}} label='Converter'></Btn >
+        <Resp resp = {resultado}></Resp>
       </View>
     
   );
@@ -60,3 +68,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   }
 });
+
