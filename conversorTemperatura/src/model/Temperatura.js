@@ -1,13 +1,20 @@
 export default class Temperatura{
-    constructor(temperatura){
-        this.temperatura = temperatura;
+    constructor(valorTemp = 0, medida =''){
+        this.valorTemp = valorTemp;
+        this.medida = medida;
     }
 
-    setTemperatura(temperatura = 0){
-        this.temperatura = this.temperatura;
+    setValorTemp(valorTemp = 0){
+        this.valorTemp = valorTemp;
     }
     getTemp(){
-        return this.temperatura;
+        return this.valorTemp;
+    }
+    getMedida(){
+        return this.medida;
+    }  
+    setMedida(medida = ''){
+        this.medida = medida;
     }
 
 }
