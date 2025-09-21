@@ -1,4 +1,4 @@
-// src/controller/MoedaController.js
+
 import Moeda from "../model/Moeda";
 
 const MoedaController = () => {
